@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+               http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="rates-template" pageWidth="595" pageHeight="842"
+              columnWidth="555" leftMargin="20" rightMargin="20"
+              topMargin="20" bottomMargin="20"
+              uuid="3737c8f8-35e7-4ea0-bf9f-c557f6bbbdf3">
+
+        <field name="currencyPair" class="java.lang.String"/>
+        <field name="date" class="java.util.Date"/>
+        <field name="askPrice" class="java.math.BigDecimal"/>
+        <field name="bidPrice" class="java.math.BigDecimal"/>
+
+    <columnHeader>
+        <band height = "50">
+            <staticText>
+                <reportElement x = "0" y = "0" width = "120" height = "50" />
+                <textElement verticalAlignment = "Middle">
+                    <font size="16" isBold = "true" />
+                </textElement>
+                <text><![CDATA[Currency Pair]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x = "120" y = "0" width = "120" height = "50" />
+                <textElement verticalAlignment = "Middle">
+                    <font size="16" isBold = "true" />
+                </textElement>
+                <text><![CDATA[Date]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x = "240" y = "0" width = "120" height = "50" />
+                <textElement verticalAlignment = "Middle">
+                    <font size="16" isBold = "true" />
+                </textElement>
+                <text><![CDATA[Ask Price]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x = "360" y = "0" width = "120" height = "50" />
+                <textElement verticalAlignment = "Middle">
+                    <font size="16" isBold = "true" />
+                </textElement>
+                <text><![CDATA[Bid Price]]></text>
+            </staticText>
+       </band>
+    </columnHeader>
+
+    <detail>
+        <band height="25">
+            <textField>
+                <reportElement x="0" y="0" width="120" height="25"/>
+                <textElement>
+                    <font size="14" />
+                </textElement>
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{currencyPair}]]></textFieldExpression>
+            </textField>
+            <textField pattern="dd.MM.yyyy">
+                <reportElement x="120" y="0" width="120" height="25"/>
+                <textElement>
+                    <font size="14" />
+                </textElement>
+                <textFieldExpression class="java.util.Date">
+                    <![CDATA[$F{date}]]></textFieldExpression>
+            </textField>
+            <textField pattern="#,##0.00">
+                <reportElement x="240" y="0" width="120" height="25"/>
+                <textElement>
+                    <font size="14" />
+                </textElement>
+                <textFieldExpression class="java.math.BigDecimal">
+                    <![CDATA[$F{askPrice}]]></textFieldExpression>
+            </textField>
+        <textField pattern="#,##0.00">
+            <reportElement x="360" y="0" width="120" height="25"/>
+            <textElement>
+                <font size="14" />
+            </textElement>
+            <textFieldExpression class="java.math.BigDecimal">
+                <![CDATA[$F{bidPrice}]]></textFieldExpression>
+        </textField>
+        </band>
+    </detail>
+</jasperReport>
